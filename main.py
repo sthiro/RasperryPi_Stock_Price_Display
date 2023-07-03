@@ -19,7 +19,7 @@ def setAlert(Ticker,Price,Condition):  #Setting up alert
 def Alert():
     for alert in alerts:
 
-        if (alert[1] <= CurrentDemoPrice) and (alert[2] == "Crossing Down"):  #Corssing Down
+        if (alert[1] <= CurrentDemoPrice) and (alert[2] == "Crossing Down"):  #Crossing Down
             print("Alert Crossing Down")
 
         if (alert[1] >= CurrentDemoPrice) and (alert[2] == "Crossing Up"):
@@ -28,7 +28,7 @@ def Alert():
 while True:
     time.sleep(1)
 
-    print("Microsoft Price  :" + fetchPrice(2)) # Apple Price
+    print("Microsoft Price  :" + str(fetchPrice(2))) # Apple Price
     sendToDisplay(fetchPrice(0),fetchPrice(1),fetchPrice(2))
     Alert()
 
@@ -38,3 +38,4 @@ while True:
    
 
 
+ 
