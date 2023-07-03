@@ -47,7 +47,6 @@ index = 0
 while True:
     time.sleep(5)
     if index == 3: index = 0
-    print("Microsoft Price  :" + str(fetchPrice(2))) # Apple Price
     sendToDisplay(index,str(fetchPrice(index)))
     index = index + 1
 
