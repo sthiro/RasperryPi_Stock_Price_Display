@@ -6,6 +6,7 @@ import drivers
 display = drivers.Lcd()
 
 tickers = ['aapl', 'amd', "msft" ] # 0 - Apple , 1 - AMD, 2 - Microsoft
+NameStocks = ['Apple', "AMD", "Microsoft"]
 CurrentDemoPrice = 113
 alerts = []
 
@@ -13,11 +14,11 @@ def fetchPrice(ticker_no): # Fetching Price
     data = yf.Ticker(tickers[ticker_no])
     return data.info['currentPrice']
 
-def sendToDisplay(Price1, Price2, Price3):    #Displaying price on LCD
+def sendToDisplay(Index,Price):    #Displaying price on LCD
     # Remember that your sentences can only be 16 characters long!
     try:
         print("Writing to display")
-        display.lcd_display_string("Greetings aHuman!", 1)  # Write line of text to first line of display
+        display.lcd_display_string(f"{NameStocks[Index]}    : {Price} $")  # Write line of text to first line of display
 
     except KeyboardInterrupt:
         # If there is a KeyboardInterrupt (when you press ctrl+c), exit the program and cleanup
@@ -42,8 +43,7 @@ while True:
     time.sleep(5)
     if index == 3: index = 0
     print("Microsoft Price  :" + str(fetchPrice(2))) # Apple Price
-    sendToDisplay(fetchPrice(index))
-    Alert()
+    sendToDisplay(index,str(fetchPrice(index)))
     index = index + 1
 
 
