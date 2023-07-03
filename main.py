@@ -6,7 +6,7 @@ import drivers
 display = drivers.Lcd()
 
 tickers = ['aapl', 'amd', "msft" ] # 0 - Apple , 1 - AMD, 2 - Microsoft
-NameStocks = ['Apple :  ', "AMD :    ", "MSFT :    "]
+NameStocks = ['Apple :  ', "AMD :    ", "MSFT :   "]
 CurrentDemoPrice = 113
 alerts = []
 
