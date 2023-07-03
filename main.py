@@ -10,6 +10,9 @@ NameStocks = ['Apple', "AMD", "Microsoft"]
 CurrentDemoPrice = 113
 alerts = []
 
+display.lcd_display_string("Loading ....",0)
+display.lcd_clear()
+
 def fetchPrice(ticker_no): # Fetching Price
     data = yf.Ticker(tickers[ticker_no])
     return data.info['currentPrice']
@@ -17,9 +20,10 @@ def fetchPrice(ticker_no): # Fetching Price
 def sendToDisplay(Index,Price):    #Displaying price on LCD
     # Remember that your sentences can only be 16 characters long!
     try:
+        display.lcd_clear()
         print("Writing to display")
         display.lcd_display_string(f"{NameStocks[Index]}    : {Price} $",0)  # Write line of text to first line of display
-        display.lcd_display_string("By - S.Thiroshan",0)  # Write line of text to first line of display
+        display.lcd_display_string("By - S.Thiroshan",1)  # Write line of text to first line of display
 
     except KeyboardInterrupt:
         # If there is a KeyboardInterrupt (when you press ctrl+c), exit the program and cleanup
