@@ -2,71 +2,39 @@ import yfinance as yf
 import pandas as pd
 import time
 
+tickers = ['aapl', 'amd', "msft" ] # 0 - Apple , 1 - AMD, 2 - Microsoft
+CurrentDemoPrice = 113
+alerts = []
+
+def fetchPrice(ticker_no): # Fetching Price
+    data = yf.Ticker(tickers[ticker_no])
+    return data.info['currentPrice']
+
+def sendToDisplay(Price1, Price2, Price3):    #Displaying price on LCD
+    pass
+
+def setAlert(Ticker,Price,Condition):  #Setting up alert
+    alerts.append([Ticker,Price,Condition])
+
+def Alert():
+    for alert in alerts:
+
+        if (alert[1] <= CurrentDemoPrice) and (alert[2] == "Crossing Down"):  #Corssing Down
+            print("Alert Crossing Down")
+
+        if (alert[1] >= CurrentDemoPrice) and (alert[2] == "Crossing Up"):
+            print("Alert Crossing Up")
+
 while True:
-    ################################ Apple ################################
+    time.sleep(1)
+
+    print("Microsoft Price  :" + fetchPrice(2)) # Apple Price
+    sendToDisplay(fetchPrice(0),fetchPrice(1),fetchPrice(2))
+    Alert()
 
 
-    # Define the tickers for the stocks you want to fetch
-    tickers_Apple = ['AAPL']
-
-    # Fetch the stock data
-    data_Apple = yf.download(tickers_Apple, period='1d', interval='1m', group_by='ticker')
-
-    df_Apple = pd.DataFrame(data_Apple)
-
-    # Get the last row's "Adj Close" value
-    last_adj_close_Apple = df_Apple['Adj Close'].iloc[-1]
-
-    # Convert DataFrame to Excel file
-    df_Apple.to_excel('Apple_Stock_Price.xlsx', index=False)
-
-    print("Apple    : " + str(last_adj_close_Apple))
 
 
-    ################################ Apple ################################
-
-    ################################ AMD ################################
+   
 
 
-    # Define the tickers for the stocks you want to fetch
-    tickers_AMD= ['AMD']
-
-    # Fetch the stock data
-    data_AMD = yf.download(tickers_AMD, period='1d', interval='1m', group_by='ticker')
-
-    df_AMD = pd.DataFrame(data_AMD)
-
-    # Get the last row's "Adj Close" value
-    last_adj_close_AMD = df_AMD['Adj Close'].iloc[-1]
-
-    # Convert DataFrame to Excel file
-    df_AMD.to_excel('AMD_Stock_Price.xlsx', index=False)
-
-    print("AMD  :" + str(last_adj_close_AMD))
-
-
-    ################################ AMD ################################
-
-    ################################ Microsoft ################################
-
-
-    # Define the tickers for the stocks you want to fetch
-    tickers_MSFT = ['MSFT']
-
-    # Fetch the stock data
-    data_MSFT = yf.download(tickers_MSFT, period='1d', interval='1m', group_by='ticker')
-
-    df_MSFT = pd.DataFrame(data_MSFT)
-
-    # Get the last row's "Adj Close" value
-    last_adj_close_MSFT = df_MSFT['Adj Close'].iloc[-1]
-
-    # Convert DataFrame to Excel file
-    df_MSFT.to_excel('Microsoft_Stock_Price.xlsx', index=False)
-
-    print("MSFT  :" + str(last_adj_close_MSFT))
-
-    ################################ Microsoft ################################
-
-    time.sleep(2)
-    print("---------------------------------------------  2 Sec --------------------------------------------- ")
