@@ -21,7 +21,7 @@ def sendToDisplay(Index,Price):    #Displaying price on LCD
     # Remember that your sentences can only be 16 characters long!
     try:
         display.lcd_clear()
-        print("Writing to display")
+        print(f"{NameStocks[Index]}{Price}$")
         display.lcd_display_string(f"{NameStocks[Index]}{Price}$",1)  # Write line of text to first line of display
         display.lcd_display_string("By - S.Thiroshan",2)  # Write line of text to first line of display
 
