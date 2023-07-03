@@ -6,7 +6,7 @@ import drivers
 display = drivers.Lcd()
 
 tickers = ['aapl', 'amd', "msft" ] # 0 - Apple , 1 - AMD, 2 - Microsoft
-NameStocks = ['Apple', "AMD", "Microsoft"]
+NameStocks = ['Apple', "AMD", "MSFT"]
 CurrentDemoPrice = 113
 alerts = []
 
@@ -22,7 +22,7 @@ def sendToDisplay(Index,Price):    #Displaying price on LCD
     try:
         display.lcd_clear()
         print("Writing to display")
-        display.lcd_display_string(f"{NameStocks[Index]}    : {Price} $",1)  # Write line of text to first line of display
+        display.lcd_display_string(f"{NameStocks[Index]}  : {Price}$",1)  # Write line of text to first line of display
         display.lcd_display_string("By - S.Thiroshan",2)  # Write line of text to first line of display
 
     except KeyboardInterrupt:
