@@ -36,12 +36,15 @@ def Alert():
         if (alert[1] >= CurrentDemoPrice) and (alert[2] == "Crossing Up"):
             print("Alert Crossing Up")
 
-while True:
-    time.sleep(1)
+index = 0
 
+while True:
+    time.sleep(5)
+    if index == 3: index = 0
     print("Microsoft Price  :" + str(fetchPrice(2))) # Apple Price
-    sendToDisplay(fetchPrice(0),fetchPrice(1),fetchPrice(2))
+    sendToDisplay(fetchPrice(index))
     Alert()
+    index = index + 1
 
 
 
