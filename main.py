@@ -1,6 +1,9 @@
 import yfinance as yf
 import pandas as pd
 import time
+import drivers
+
+display = drivers.Lcd()
 
 tickers = ['aapl', 'amd', "msft" ] # 0 - Apple , 1 - AMD, 2 - Microsoft
 CurrentDemoPrice = 113
@@ -11,7 +14,15 @@ def fetchPrice(ticker_no): # Fetching Price
     return data.info['currentPrice']
 
 def sendToDisplay(Price1, Price2, Price3):    #Displaying price on LCD
-    pass
+    # Remember that your sentences can only be 16 characters long!
+    try:
+        print("Writing to display")
+        display.lcd_display_string("Greetings Human!", 1)  # Write line of text to first line of display
+
+    except KeyboardInterrupt:
+        # If there is a KeyboardInterrupt (when you press ctrl+c), exit the program and cleanup
+        print("Cleaning up!")
+        display.lcd_clear()
 
 def setAlert(Ticker,Price,Condition):  #Setting up alert
     alerts.append([Ticker,Price,Condition])
