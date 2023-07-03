@@ -17,7 +17,7 @@ def sendToDisplay(Price1, Price2, Price3):    #Displaying price on LCD
     # Remember that your sentences can only be 16 characters long!
     try:
         print("Writing to display")
-        display.lcd_display_string("Greetings Human!", 1)  # Write line of text to first line of display
+        display.lcd_display_string("Greetings aHuman!", 1)  # Write line of text to first line of display
 
     except KeyboardInterrupt:
         # If there is a KeyboardInterrupt (when you press ctrl+c), exit the program and cleanup
